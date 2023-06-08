@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'Base_to_link1', 'Link1_to_link2', 'Link2_to_link3', 'Link3_to_link4', 'Link4_to_link5', 'Link5_to_link6', ]
