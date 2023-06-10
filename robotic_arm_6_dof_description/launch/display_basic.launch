@@ -16,5 +16,5 @@
     name="rviz"
     pkg="rviz"
     type="rviz"
-    args="-d $(find robotic_arm_6_dof_description)/urdf.rviz" />
+    args="-d $(find robotic_arm_6_dof_description)/rviz/simple_model.rviz" />
 </launch>
