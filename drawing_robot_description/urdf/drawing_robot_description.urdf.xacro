@@ -3,6 +3,7 @@
 <robot name="drawing_robot_description" xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- ____________________________________ XACRO IMPORTS AND PROPERTIES _______________________________________-->
   <xacro:include filename="$(find drawing_robot_description)/urdf/colors_and_materials.xacro"/>
+  <xacro:include filename="$(find drawing_robot_description)/urdf/drawing_robot_gazebo.urdf.xacro"/>
 
   <xacro:property name="angle_servo" value="1.5707" />
   <xacro:property name="black_servo" value="7.605" />
@@ -35,7 +36,7 @@
         <mesh
           filename="package://drawing_robot_description/meshes/base_link.STL" />
       </geometry>
-      <material name="gray_pla"/>
+      <material name="grey_pla"/>
     </visual>
     <collision>
       <origin
@@ -73,7 +74,7 @@
         <mesh
           filename="package://drawing_robot_description/meshes/arm_1.STL" />
       </geometry>
-      <material name="gray_pla"/>
+      <material name="grey_pla"/>
     </visual>
     <collision>
       <origin
@@ -129,7 +130,7 @@
         <mesh
           filename="package://drawing_robot_description/meshes/arm_2.STL" />
       </geometry>
-      <material name="gray_pla"/>
+      <material name="grey_pla"/>
     </visual>
     <collision>
       <origin

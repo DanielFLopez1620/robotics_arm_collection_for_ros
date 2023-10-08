@@ -1,0 +1,22 @@
+<robot name="drawing_robot_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
+  <gazebo
+    reference="base_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo
+    reference="arm_1">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo
+    reference="arm_2">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo
+    reference="hand">
+    <material>Gazebo/SkyBlue</material>
+  </gazebo>
+
+</robot>
