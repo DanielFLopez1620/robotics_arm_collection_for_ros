@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="drawing_robot_description" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- ____________________________________ XACRO IMPORTS AND PROPERTIES _______________________________________-->
+  <xacro:include filename="$(find drawing_robot_description)/urdf/colors_and_materials.xacro"/>
+
+  <xacro:property name="angle_servo" value="1.5707" />
+  <xacro:property name="black_servo" value="7.605" />
+  <xacro:property name="blue_servo" value="0.636" />
+  <xacro:property name="offset_pen" value="-0.02" />
+
+ 
+  <!-- ____________________________________ BASE LINK DEFINITIONS ______________________________________________-->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="2.2369E-05 -0.0095991 0.018203"
+        rpy="0 0 0" />
+      <mass
+        value="0.19207" />
+      <inertia
+        ixx="0.00010604"
+        ixy="-5.7604E-12"
+        ixz="2.8656E-10"
+        iyy="9.0218E-05"
+        iyz="-8.2785E-06"
+        izz="0.0001446" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drawing_robot_description/meshes/base_link.STL" />
+      </geometry>
+      <material name="gray_pla"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drawing_robot_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ________________________________________ ARM 1 DEFINITIONS ______________________________________________-->
+  <link
+    name="arm_1">
+    <inertial>
+      <origin
+        xyz="9.8801E-05 0.081425 0.0056756"
+        rpy="0 0 0" />
+      <mass
+        value="0.16147" />
+      <inertia
+        ixx="0.00012764"
+        ixy="-5.7417E-12"
+        ixz="2.8659E-10"
+        iyy="5.7319E-05"
+        iyz="6.0193E-06"
+        izz="9.0777E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drawing_robot_description/meshes/arm_1.STL" />
+      </geometry>
+      <material name="gray_pla"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drawing_robot_description/meshes/arm_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_arm1"
+    type="revolute">
+    <origin
+      xyz="0 0.019815 0.0295"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="arm_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-${angle_servo}"
+      upper="${angle_servo}"
+      effort="${black_servo}"
+      velocity="8.05" />
+  </joint>
+
+  <!-- ________________________________________ ARM 1 DEFINITIONS ______________________________________________-->
+  <link
+    name="arm_2">
+    <inertial>
+      <origin
+        xyz="-0.0040009 0.073708 0.014062"
+        rpy="0 0 0" />
+      <mass
+        value="0.15444" />
+      <inertia
+        ixx="7.5619E-05"
+        ixy="-8.4032E-08"
+        ixz="1.738E-06"
+        iyy="6.6114E-05"
+        iyz="-3.3092E-06"
+        izz="4.0148E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drawing_robot_description/meshes/arm_2.STL" />
+      </geometry>
+      <material name="gray_pla"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drawing_robot_description/meshes/arm_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_2_to_arm_1"
+    type="revolute">
+    <origin
+      xyz="0 0.12845 0.00093551"
+      rpy="0 0 0" />
+    <parent
+      link="arm_1" />
+    <child
+      link="arm_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-${angle_servo}"
+      upper="${angle_servo}"
+      effort="${black_servo}"
+      velocity="8.05" />
+  </joint>
+
+  <!-- ________________________________________ ARM 2 DEFINITIONS ______________________________________________-->
+  <link
+    name="hand">
+    <inertial>
+      <origin
+        xyz="-0.00030849 -0.0071882 0.0050741"
+        rpy="0 0 0" />
+      <mass
+        value="0.078332" />
+      <inertia
+        ixx="9.0141E-05"
+        ixy="-1.4456E-07"
+        ixz="-1.3295E-07"
+        iyy="9.0236E-05"
+        iyz="3.1377E-07"
+        izz="9.782E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drawing_robot_description/meshes/hand.STL" />
+      </geometry>
+      <material name="blue_pla"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://drawing_robot_description/meshes/hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hand_to_arm2"
+    type="prismatic">
+    <origin
+      xyz="0 0.11785 0.027766"
+      rpy="3.1416 0 0" />
+    <parent
+      link="arm_2" />
+    <child
+      link="hand" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="${offset_pen}"
+      upper="0"
+      effort="${blue_servo}"
+      velocity="3" />
+  </joint>
+</robot>
