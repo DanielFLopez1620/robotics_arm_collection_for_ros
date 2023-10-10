@@ -1,0 +1,42 @@
+<robot name="drawing_robot_transmission" xmlns:xacro="http://ros.org/wiki/xacro">
+  <transmission name="arm1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="base_to_arm1">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="arm1_motor">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="arm2_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="arm_2_to_arm_1">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="arm2_motor">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="hand_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="hand_to_arm2">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="hand_motor">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="control"
+    filename="libgazebo_ros_control.so">
+    <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>

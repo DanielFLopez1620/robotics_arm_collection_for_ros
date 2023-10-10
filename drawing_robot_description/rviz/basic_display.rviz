@@ -82,6 +82,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -103,6 +107,8 @@ Visualization Manager:
           Value: true
         hand:
           Value: true
+        world:
+          Value: true
       Marker Alpha: 1
       Marker Scale: 0.20000000298023224
       Name: TF
@@ -110,11 +116,12 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          arm_1:
-            arm_2:
-              hand:
-                {}
+        world:
+          base_link:
+            arm_1:
+              arm_2:
+                hand:
+                  {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -161,9 +168,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5953980088233948
+      Pitch: 0.34039807319641113
       Target Frame: <Fixed Frame>
-      Yaw: 0.9153984785079956
+      Yaw: 0.31039878726005554
     Saved: ~
 Window Geometry:
   Displays:

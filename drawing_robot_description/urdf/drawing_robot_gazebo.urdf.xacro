@@ -2,21 +2,25 @@
   <gazebo
     reference="base_link">
     <material>Gazebo/Grey</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo
     reference="arm_1">
     <material>Gazebo/Grey</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo
     reference="arm_2">
     <material>Gazebo/Grey</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo
     reference="hand">
     <material>Gazebo/SkyBlue</material>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
 </robot>

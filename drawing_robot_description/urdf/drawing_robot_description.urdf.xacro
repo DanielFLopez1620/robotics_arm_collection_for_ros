@@ -4,6 +4,7 @@
   <!-- ____________________________________ XACRO IMPORTS AND PROPERTIES _______________________________________-->
   <xacro:include filename="$(find drawing_robot_description)/urdf/colors_and_materials.xacro"/>
   <xacro:include filename="$(find drawing_robot_description)/urdf/drawing_robot_gazebo.urdf.xacro"/>
+  <xacro:include filename="$(find drawing_robot_description)/urdf/drawing_robot_transmission.urdf.xacro"/>
 
   <xacro:property name="angle_servo" value="1.5707" />
   <xacro:property name="black_servo" value="7.605" />
@@ -12,6 +13,13 @@
 
  
   <!-- ____________________________________ BASE LINK DEFINITIONS ______________________________________________-->
+  <link name="world"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.0175"/>
+  </joint>
+  
   <link
     name="base_link">
     <inertial>
@@ -105,7 +113,7 @@
       velocity="8.05" />
   </joint>
 
-  <!-- ________________________________________ ARM 1 DEFINITIONS ______________________________________________-->
+  <!-- ________________________________________ ARM 2 DEFINITIONS ______________________________________________-->
   <link
     name="arm_2">
     <inertial>
@@ -161,7 +169,7 @@
       velocity="8.05" />
   </joint>
 
-  <!-- ________________________________________ ARM 2 DEFINITIONS ______________________________________________-->
+  <!-- ________________________________________ END EFFECTOR DEFINITIONS ______________________________________________-->
   <link
     name="hand">
     <inertial>
