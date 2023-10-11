@@ -24,10 +24,10 @@
   <transmission name="hand_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="hand_to_arm2">
-    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="hand_motor">
-    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
