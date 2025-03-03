@@ -10,7 +10,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Define paths
     pkg_description = get_package_share_directory('eezybot_mk2_description')
-    xacro_file = os.path.join(pkg_description, 'urdf', 'orion.urdf.xacro')
+    xacro_file = os.path.join(pkg_description, 'urdf', 'mk2.urdf.xacro')
 
     # --------------------------- Configurations -----------------------------
     use_gui = LaunchConfiguration('use_gui')

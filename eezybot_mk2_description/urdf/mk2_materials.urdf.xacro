@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <material name="SoftBlack">
-        <color rgba="0.2 0.2 0.2 1.0"/>  
+    <material name="BlackPLA">
+        <color rgba="0.5 0.5 0.5 1.0"/>  
+    </material>
+    <material name="OrangePLA">
+        <color rgba="0.6 0.3 0.0 1.0"/>  
     </material>
 </robot>
