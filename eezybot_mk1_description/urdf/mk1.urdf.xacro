@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="eezybot_mk1">
+
+    <!-- Include other files -->
+    <xacro:include filename="$(find eezybot_mk1_description)/urdf/mk1_material.urdf.xacro"/>
+    <xacro:include filename="$(find eezybot_mk1_description)/urdf/mk1_base.urdf.xacro"/>
+    <xacro:include filename="$(find eezybot_mk1_description)/urdf/mk1_sim.urdf.xacro"/>
+
+</robot>
