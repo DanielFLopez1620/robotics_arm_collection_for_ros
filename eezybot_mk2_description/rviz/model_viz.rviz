@@ -63,28 +63,30 @@ Visualization Manager:
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
-        All Enabled: false
+        All Enabled: true
         MG996r_1:
-          Value: false
+          Value: true
         MG996r_2:
-          Value: false
+          Value: true
         MG996r_conn1:
-          Value: false
+          Value: true
         MG996r_conn2:
           Value: true
         base_link:
-          Value: false
+          Value: true
         gear_mast:
-          Value: false
+          Value: true
         gearservo_1:
-          Value: false
+          Value: true
         lower_base:
-          Value: false
+          Value: true
+        main_arm:
+          Value: true
         main_base:
-          Value: false
+          Value: true
         upper_base:
-          Value: false
-      Marker Scale: 0.10000000149011612
+          Value: true
+      Marker Scale: 0.05000000074505806
       Name: TF
       Show Arrows: true
       Show Axes: true
@@ -101,7 +103,8 @@ Visualization Manager:
                 upper_base:
                   MG996r_2:
                     MG996r_conn2:
-                      {}
+                      main_arm:
+                        {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -117,7 +120,7 @@ Visualization Manager:
         Value: /robot_description
       Enabled: true
       Links:
-        All Links Enabled: false
+        All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
@@ -126,17 +129,17 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         MG996r_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         MG996r_conn1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         MG996r_conn2:
           Alpha: 1
           Show Axes: false
@@ -150,27 +153,32 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         gearservo_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         lower_base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
+        main_arm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         main_base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         upper_base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -225,25 +233,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.182603120803833
+      Distance: 0.37586599588394165
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.04960547387599945
-        Y: -0.007777757477015257
-        Z: 0.06326756626367569
+        X: 0.08508177101612091
+        Y: -0.04535730183124542
+        Z: 0.1109335869550705
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.08539807796478271
+      Pitch: 0.4647974371910095
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.743587970733643
+      Yaw: 3.8335607051849365
     Saved: ~
 Window Geometry:
   Displays:
