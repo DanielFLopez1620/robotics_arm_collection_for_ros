@@ -230,4 +230,68 @@
         <child link="upper_base"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
+
+
+    <link name="MG996r_2">
+    <visual>
+        <origin xyz="0 0 0" rpy="${-pi/2} ${-pi/2} 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/MG946R-MG946R.stl" 
+            scale="1 1 1"/>
+        </geometry>
+        <material name="BlackPLA"/>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="${-pi/2} ${-pi/2} 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/MG946R-MG946R.stl" 
+            scale="1 1 1"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="MG996r_2_joint" type="fixed">
+        <parent link="upper_base"/>
+        <child link="MG996r_2"/>
+        <origin xyz="0.002 -0.054 0.0335" rpy="0 0 0"/>
+    </joint>
+
+    <link name="MG996r_conn2">
+    <visual>
+        <origin xyz="-0.0165 -0.0071 0" rpy="-${pi/2} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/TG9_HORN.stl" 
+            scale="1 1 1"/>
+        </geometry>
+        <material name="BlackPLA"/>
+    </visual>
+    <collision>
+        <origin xyz="-0.0165 -0.007 0" rpy="-${pi/2} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/TG9_HORN.stl" 
+            scale="1 1 1"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="MG996r_conn2_joint" type="revolute">
+        <parent link="MG996r_2"/>
+        <child link="MG996r_conn2"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="0.01" velocity="0.01"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
 </robot>
