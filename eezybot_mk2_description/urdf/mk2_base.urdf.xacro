@@ -435,4 +435,74 @@
         <origin xyz="0 0 0.01" rpy="0 0 0"/>
     </joint>
 
+    <!-- ///////////////////////// HORARM ////////////////////////////////// -->
+    <link name="hor_arm">
+    <visual>
+        <origin xyz="0.0305 0.153 0" rpy=" ${pi} ${pi/2} 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_006_horarm__.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="OrangePLA"/>
+    </visual>
+    <collision>
+        <origin xyz="0.0305 0.153 0" rpy=" ${pi} ${pi/2} 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_006_horarm__.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="hor_arm_joint" type="revolute">
+        <parent link="main_arm"/>
+        <child link="hor_arm"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="${-pi}" upper="${0}" effort="0.01" velocity="0.01"/>
+        <origin xyz="0.132 -0.03 0.02575" rpy="0 0 0"/>
+        <mimic joint="MG996r_conn3_joint" multiplier="-1.0" offset="0.0"/>
+    </joint>
+
+    <!-- ///////////////////////// LINK135 ////////////////////////////////// -->
+    <link name="link135_arm">
+    <visual>
+        <origin xyz="-0.00675 0.00675 0" rpy="0 ${pi} ${pi}"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_004_link135.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="OrangePLA"/>
+    </visual>
+    <collision>
+        <origin xyz="-0.00675 0.00675 0" rpy="0 ${pi} ${pi}"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_004_link135.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="link135_arm_joint" type="revolute">
+        <parent link="v_arm"/>
+        <child link="link135_arm"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="${-pi/2}" upper="${pi/2}" effort="0.01" velocity="0.01"/>
+        <origin xyz="0.055 0 -0.005" rpy="0 0 ${pi/12}"/>
+        <mimic joint="MG996r_conn2_joint" multiplier="-1.5" offset="0.0"/>
+    </joint>
+
 </robot>

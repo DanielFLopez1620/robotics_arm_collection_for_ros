@@ -82,6 +82,8 @@ Visualization Manager:
           Value: false
         gearservo_1:
           Value: false
+        hor_arm:
+          Value: true
         lower_base:
           Value: false
         main_arm:
@@ -91,7 +93,7 @@ Visualization Manager:
         upper_base:
           Value: false
         v_arm:
-          Value: true
+          Value: false
       Marker Scale: 0.05000000074505806
       Name: TF
       Show Arrows: true
@@ -110,7 +112,8 @@ Visualization Manager:
                   MG996r_2:
                     MG996r_conn2:
                       main_arm:
-                        {}
+                        hor_arm:
+                          {}
                   MG996r_3:
                     MG996r_conn3:
                       v_arm:
@@ -179,6 +182,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: false
+        hor_arm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         lower_base:
           Alpha: 1
           Show Axes: false
@@ -203,7 +211,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
       Mass Properties:
         Inertia: false
         Mass: false
@@ -258,25 +266,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.21522334218025208
+      Distance: 0.4542984962463379
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.05630003660917282
-        Y: -0.043244410306215286
-        Z: 0.09839971363544464
+        X: 0.10130099207162857
+        Y: -0.043160635977983475
+        Z: 0.1019601970911026
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.07479775696992874
+      Pitch: 0.9047971367835999
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.563521146774292
+      Yaw: 1.6735234260559082
     Saved: ~
 Window Geometry:
   Displays:
