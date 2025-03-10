@@ -505,4 +505,202 @@
         <mimic joint="MG996r_conn2_joint" multiplier="-1.5" offset="0.0"/>
     </joint>
 
+    <!-- ///////////////////////// TRIALINK ////////////////////////////////// -->
+    <link name="tria_link">
+    <visual>
+        <origin xyz="-0.00675 0.04 -0.015" rpy="${pi/2} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_009_trialinkfront.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="OrangePLA"/>
+    </visual>
+    <collision>     
+        <origin xyz="-0.00675 0.04 -0.015" rpy="${pi/2} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_009_trialinkfront.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="tria_link_joint" type="fixed">
+        <parent link="hor_arm"/>
+        <child link="tria_link"/>
+        <origin xyz="0.013 0.146 -0.0185" rpy="0 0 0"/>
+    </joint>
+
+    <!-- ///////////////////////// CLAW BASE ////////////////////////////////// -->
+    <link name="claw_base">
+    <visual>
+        <origin xyz="0 0 -0.0145" rpy="${pi/2} 0 ${pi/2}"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_014_claw_base.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="OrangePLA"/>
+    </visual>
+    <collision>     
+        <origin xyz="0 0 -0.0145" rpy="${pi/2} 0 ${pi/2}"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_014_claw_base.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="claw_base_joint" type="fixed">
+        <parent link="tria_link"/>
+        <child link="claw_base"/>
+        <origin xyz="-0.01 0.0335 0.0005" rpy="0 0 0"/>
+    </joint>
+
+    <!-- ///////////////////////// Servo SG90 ////////////////////////////////// -->
+    <link name="sg90">
+    <visual>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${pi/2}"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/servo_TowerPro_SG90.stl" 
+            scale="1 1 1"/>
+        </geometry>
+        <material name="BlackPLA"/>
+    </visual>
+    <collision>     
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${pi/2}"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/servo_TowerPro_SG90.stl" 
+            scale="1 1 1"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="sg90_joint" type="fixed">
+        <parent link="claw_base"/>
+        <child link="sg90"/>
+        <origin xyz="0 0.033 -0.00185" rpy="0 0 0"/>
+    </joint>
+
+    <!-- ///////////////////////// Servo Conn SG90 ////////////////////////////////// -->
+    <link name="sg90_conn">
+    <visual>
+        <origin xyz="-0.01675 -0.006 0" rpy="-${pi/2} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/TG9_HORN.stl" 
+            scale="1 1 1"/>
+        </geometry>
+        <material name="BlackPLA"/>
+    </visual>
+    <collision>     
+        <origin xyz="-0.01675 -0.006 0" rpy="-${pi/2} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/TG9_HORN.stl" 
+            scale="1 1 1"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="sg90_conn_joint" type="revolute">
+        <parent link="sg90"/>
+        <child link="sg90_conn"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="${0}" upper="${pi}" effort="1.0" velocity="1.0"/>
+        <origin xyz="-0.0035 0.005 0" rpy="0 ${-pi/2} 0"/>
+    </joint>
+
+    <!-- /////////////////////// FIRST GEAR ////////////////////////////////// -->
+    <link name="first_gear">
+    <visual>
+        <origin xyz="-0.009 0.009 0" rpy="${pi} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_016_claw_gear_drive.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="OrangePLA"/>
+    </visual>
+    <collision>     
+        <origin xyz="-0.009 0.009 0" rpy="${pi} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_016_claw_gear_drive.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="first_gear_joint" type="fixed">
+        <parent link="sg90_conn"/>
+        <child link="first_gear"/>
+        <origin xyz="0 0 0.0055" rpy="0 0 ${pi/12}"/>
+    </joint>
+
+    <!-- /////////////////////// SEC GEAR ////////////////////////////////// -->
+    <link name="sec_gear">
+    <visual>
+        <origin xyz="0 0 0" rpy="${pi} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_018_claw_gear_driven.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="OrangePLA"/>
+    </visual>
+    <collision>     
+        <origin xyz="0 0 0" rpy="${pi} 0 0"/>
+        <geometry>
+        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_018_claw_gear_driven.STL" 
+            scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.0053"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001"/>
+    </inertial>
+    </link>
+
+    <joint name="sec_gear_joint" type="revolute">
+        <parent link="sg90"/>
+        <child link="sec_gear"/>
+        <origin xyz="-0.0025 -0.0135 0.0055" rpy="0 ${-pi/2} 0"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="-1.57" upper="1.57" effort="5.0" velocity="1.0"/>
+        <mimic joint="sg90_conn_joint" multiplier="-1.0" offset="0.0"/>
+    </joint>
+
+    
 </robot>

@@ -78,18 +78,24 @@ Visualization Manager:
           Value: false
         base_link:
           Value: false
+        claw_base:
+          Value: true
         gear_mast:
           Value: false
         gearservo_1:
           Value: false
         hor_arm:
-          Value: true
+          Value: false
+        link135_arm:
+          Value: false
         lower_base:
           Value: false
         main_arm:
           Value: false
         main_base:
           Value: false
+        tria_link:
+          Value: true
         upper_base:
           Value: false
         v_arm:
@@ -113,11 +119,14 @@ Visualization Manager:
                     MG996r_conn2:
                       main_arm:
                         hor_arm:
-                          {}
+                          tria_link:
+                            claw_base:
+                              {}
                   MG996r_3:
                     MG996r_conn3:
                       v_arm:
-                        {}
+                        link135_arm:
+                          {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -172,6 +181,11 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        claw_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         gear_mast:
           Alpha: 1
           Show Axes: false
@@ -186,7 +200,12 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
+        link135_arm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
         lower_base:
           Alpha: 1
           Show Axes: false
@@ -198,6 +217,11 @@ Visualization Manager:
           Show Trail: false
           Value: false
         main_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        tria_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -266,25 +290,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.4542984962463379
+      Distance: 0.38275957107543945
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.10130099207162857
-        Y: -0.043160635977983475
-        Z: 0.1019601970911026
+        X: 0.10681068897247314
+        Y: -0.043882060796022415
+        Z: 0.16531218588352203
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.9047971367835999
+      Pitch: 0.8497970104217529
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.6735234260559082
+      Yaw: 1.511638879776001
     Saved: ~
 Window Geometry:
   Displays:
