@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: eezybot_mk1_description
+    relative_path: urdf/mk1.urdf.xacro
+  srdf:
+    relative_path: config/eezybot_mk1.srdf
+  package_settings:
+    author_name: DanielFLopez1620
+    author_email: dfelipe.lopez@gmail.com
+    generated_timestamp: 1741647802
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

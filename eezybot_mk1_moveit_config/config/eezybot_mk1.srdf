@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="eezybot_mk1">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="gripper">
+        <chain base_link="claw_base" tip_link="right_finger"/>
+    </group>
+    <group name="arm">
+        <chain base_link="base_link" tip_link="forearm_part"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="open_gripper" group="gripper">
+        <joint name="right_finger_joint" value="1.0884"/>
+    </group_state>
+    <group_state name="closed" group="gripper">
+        <joint name="right_finger_joint" value="0"/>
+    </group_state>
+    <group_state name="extended_front" group="arm">
+        <joint name="arm_part_joint" value="2.2188"/>
+        <joint name="forearm_part_joint" value="0.895"/>
+        <joint name="raund_plate_joint" value="0"/>
+    </group_state>
+    <group_state name="neutral" group="arm">
+        <joint name="arm_part_joint" value="3.35"/>
+        <joint name="forearm_part_joint" value="0"/>
+        <joint name="raund_plate_joint" value="0"/>
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="gripper_ee" parent_link="forearm_part" group="gripper"/>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="base_link"/>
+    <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
+    <passive_joint name="Connection_forearm_joint"/>
+    <passive_joint name="foream_base_joint"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="Connection_forearm" link2="foream_base" reason="Adjacent"/>
+    <disable_collisions link1="Connection_forearm" link2="forearm_part" reason="Never"/>
+    <disable_collisions link1="arm_part" link2="foream_base" reason="Never"/>
+    <disable_collisions link1="arm_part" link2="forearm_part" reason="Adjacent"/>
+    <disable_collisions link1="arm_part" link2="main_base" reason="Never"/>
+    <disable_collisions link1="arm_part" link2="over_plate" reason="Adjacent"/>
+    <disable_collisions link1="arm_part" link2="raund_plate" reason="Never"/>
+    <disable_collisions link1="claw_base" link2="foream_base" reason="Never"/>
+    <disable_collisions link1="claw_base" link2="forearm_part" reason="Adjacent"/>
+    <disable_collisions link1="claw_base" link2="left_finger" reason="Adjacent"/>
+    <disable_collisions link1="claw_base" link2="right_finger" reason="Adjacent"/>
+    <disable_collisions link1="foream_base" link2="forearm_part" reason="Never"/>
+    <disable_collisions link1="foream_base" link2="over_plate" reason="Adjacent"/>
+    <disable_collisions link1="main_base" link2="over_plate" reason="Never"/>
+    <disable_collisions link1="main_base" link2="raund_plate" reason="Adjacent"/>
+    <disable_collisions link1="over_plate" link2="raund_plate" reason="Adjacent"/>
+</robot>

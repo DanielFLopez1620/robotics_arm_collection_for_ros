@@ -1,0 +1,7 @@
+# Default initial positions for eezybot_mk1's ros2_control fake system
+
+initial_positions:
+  arm_part_joint: 0
+  forearm_part_joint: 0
+  raund_plate_joint: 0
+  right_finger_joint: 0
