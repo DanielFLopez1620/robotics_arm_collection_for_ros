@@ -5,10 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /TF1
         - /TF1/Frames1
-        - /RobotModel1
-        - /RobotModel1/Links1
       Splitter Ratio: 0.5
     Tree Height: 707
   - Class: rviz_common/Selection
@@ -63,43 +60,55 @@ Visualization Manager:
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
-        All Enabled: false
+        All Enabled: true
         MG996r_1:
-          Value: false
+          Value: true
         MG996r_2:
-          Value: false
+          Value: true
         MG996r_3:
-          Value: false
+          Value: true
         MG996r_conn1:
-          Value: false
+          Value: true
         MG996r_conn2:
-          Value: false
+          Value: true
         MG996r_conn3:
-          Value: false
+          Value: true
         base_link:
-          Value: false
+          Value: true
         claw_base:
           Value: true
+        first_gear:
+          Value: true
         gear_mast:
-          Value: false
+          Value: true
         gearservo_1:
-          Value: false
+          Value: true
         hor_arm:
-          Value: false
+          Value: true
+        left_gripper:
+          Value: true
         link135_arm:
-          Value: false
+          Value: true
         lower_base:
-          Value: false
+          Value: true
         main_arm:
-          Value: false
+          Value: true
         main_base:
-          Value: false
+          Value: true
+        right_gripper:
+          Value: true
+        sec_gear:
+          Value: true
+        sg90:
+          Value: true
+        sg90_conn:
+          Value: true
         tria_link:
           Value: true
         upper_base:
-          Value: false
+          Value: true
         v_arm:
-          Value: false
+          Value: true
       Marker Scale: 0.05000000074505806
       Name: TF
       Show Arrows: true
@@ -121,7 +130,15 @@ Visualization Manager:
                         hor_arm:
                           tria_link:
                             claw_base:
-                              {}
+                              sg90:
+                                right_gripper:
+                                  {}
+                                sec_gear:
+                                  left_gripper:
+                                    {}
+                                sg90_conn:
+                                  first_gear:
+                                    {}
                   MG996r_3:
                     MG996r_conn3:
                       v_arm:
@@ -142,7 +159,7 @@ Visualization Manager:
         Value: /robot_description
       Enabled: true
       Links:
-        All Links Enabled: false
+        All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
@@ -151,32 +168,32 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         MG996r_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         MG996r_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         MG996r_conn1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         MG996r_conn2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         MG996r_conn3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
@@ -186,56 +203,86 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        first_gear:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         gear_mast:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         gearservo_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         hor_arm:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
+        left_gripper:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         link135_arm:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         lower_base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         main_arm:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         main_base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
+        right_gripper:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sec_gear:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sg90:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sg90_conn:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         tria_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         upper_base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         v_arm:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -246,7 +293,7 @@ Visualization Manager:
       Visual Enabled: true
   Enabled: true
   Global Options:
-    Background Color: 48; 48; 48
+    Background Color: 119; 118; 123
     Fixed Frame: base_link
     Frame Rate: 30
   Name: root
@@ -290,25 +337,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.38275957107543945
+      Distance: 0.547612190246582
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.10681068897247314
-        Y: -0.043882060796022415
-        Z: 0.16531218588352203
+        X: 0.05223808437585831
+        Y: -0.02108095772564411
+        Z: 0.1133677288889885
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8497970104217529
+      Pitch: 0.39979782700538635
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.511638879776001
+      Yaw: 0.809800386428833
     Saved: ~
 Window Geometry:
   Displays:
