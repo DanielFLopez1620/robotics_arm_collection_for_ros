@@ -12,9 +12,9 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
     # ------------------------ Paths definitions ----------------------------
-    pkg_description = get_package_share_directory('eezybot_mk2_description')
+    pkg_description = get_package_share_directory('eezybot_mk2_gz')
     pkg_gz = get_package_share_directory('ros_gz_sim')
-    rsp_file = os.path.join(pkg_description, 'launch', 'rsp.launch.py')
+    rsp_file = os.path.join(pkg_description, 'launch', 'rsp_gz.launch.py')
     gz_file = os.path.join(pkg_gz, 'launch', 'gz_sim.launch.py')
 
 

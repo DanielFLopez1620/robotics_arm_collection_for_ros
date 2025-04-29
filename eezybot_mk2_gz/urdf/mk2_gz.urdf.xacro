@@ -6,5 +6,6 @@
     <!-- Include other files -->
     <xacro:include filename="$(find eezybot_mk2_description)/urdf/include/mk2_materials.urdf.xacro"/>
     <xacro:include filename="$(find eezybot_mk2_description)/urdf/include/mk2_base.urdf.xacro"/>
+    <xacro:include filename="$(find eezybot_mk2_gz)/urdf/include/mk2_gazebo.urdf.xacro"/>
 
 </robot>

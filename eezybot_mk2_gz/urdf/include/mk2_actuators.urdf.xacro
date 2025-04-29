@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="eezybot_mk2">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <plugin
         filename="gz-sim-joint-state-publisher-system"
