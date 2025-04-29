@@ -301,7 +301,7 @@
         <parent link="MG996r_2"/>
         <child link="MG996r_conn2"/>
         <axis xyz="0.0 0.0 1.0"/>
-        <limit lower="${-pi/2}" upper="${pi/2}" effort="0.01" velocity="0.01"/>
+        <limit lower="${-pi/6}" upper="${pi/4}" effort="0.01" velocity="0.01"/>
         <origin xyz="0 0.0335 0.0095" rpy="${-pi/2} ${-pi/2} 0"/>
     </joint>
 
@@ -400,40 +400,43 @@
         <child link="MG996r_conn3"/>
         <axis xyz="0.0 0.0 1.0"/>
         <limit lower="${-pi}" upper="${0}" effort="0.01" velocity="0.01"/>
+        <mimic joint="hor_arm_joint" multiplier="-1.0" offset="0.0"/>
         <origin xyz="0 -0.0335 0.0095" rpy="${pi/2} ${pi} 0"/>
     </joint>
 
-    <!-- //////////////////////// V ARM ////////////////////////////////// -->
-    <link name="v_arm">
-    <visual>
-        <origin xyz="-0.015 0.015 0" rpy="${pi} 0 0"/>
-        <geometry>
-        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_003_varm.STL" 
-            scale="0.001 0.001 0.001"/>
-        </geometry>
-        <material name="OrangePLA"/>
-    </visual>
-    <collision>
-        <origin xyz="-0.015 0.015 0" rpy="${pi} 0 0"/>
-        <geometry>
-        <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_003_varm.STL" 
-            scale="0.001 0.001 0.001"/>
-        </geometry>
-    </collision>
-    <inertial>
-        <origin xyz="0 0 0"/>
-        <mass value="0.0053"/>
-        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
-                iyy="0.001" iyz="0.0"
-                izz="0.001"/>
-    </inertial>
-    </link>
+    <xacro:if value="${extras}">
+        <!-- //////////////////////// V ARM ////////////////////////////////// -->
+        <link name="v_arm">
+        <visual>
+            <origin xyz="-0.015 0.015 0" rpy="${pi} 0 0"/>
+            <geometry>
+            <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_003_varm.STL" 
+                scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="OrangePLA"/>
+        </visual>
+        <collision>
+            <origin xyz="-0.015 0.015 0" rpy="${pi} 0 0"/>
+            <geometry>
+            <mesh filename="package://eezybot_mk2_description/meshes/EBAmk2_003_varm.STL" 
+                scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0"/>
+            <mass value="0.0053"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                    iyy="0.001" iyz="0.0"
+                    izz="0.001"/>
+        </inertial>
+        </link>
 
-    <joint name="v_arm_joint" type="fixed">
-        <parent link="MG996r_conn3"/>
-        <child link="v_arm"/>
-        <origin xyz="0 0 0.01" rpy="0 0 0"/>
-    </joint>
+        <joint name="v_arm_joint" type="fixed">
+            <parent link="MG996r_conn3"/>
+            <child link="v_arm"/>
+            <origin xyz="0 0 0.01" rpy="0 0 0"/>
+        </joint>
+    </xacro:if>
 
     <!-- ///////////////////////// HORARM ////////////////////////////////// -->
     <link name="hor_arm">
@@ -465,9 +468,8 @@
         <parent link="main_arm"/>
         <child link="hor_arm"/>
         <axis xyz="0.0 0.0 1.0"/>
-        <limit lower="${-pi}" upper="${0}" effort="0.01" velocity="0.01"/>
+        <limit lower="${-pi/8}" upper="${pi/4}" effort="0.01" velocity="0.01"/>
         <origin xyz="0.132 -0.03 0.02575" rpy="0 0 0"/>
-        <mimic joint="MG996r_conn3_joint" multiplier="-1.0" offset="0.0"/>
     </joint>
 
     <xacro:if value="${extras}">
