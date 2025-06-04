@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="eezybot_mk1">
+<ros2_control name="eezybot_mk1" type="system">
+<xacro:property name="PI" value="3.14159265359" />
+<hardware>
+     <plugin>ign_ros2_control/IgnitionSystem</plugin>
+</hardware>

@@ -5,5 +5,5 @@
     <xacro:include filename="$(find eezybot_mk1_description)/urdf/mk1_material.urdf.xacro"/>
     <xacro:include filename="$(find eezybot_mk1_description)/urdf/mk1_base.urdf.xacro"/>
     <xacro:include filename="$(find eezybot_mk1_description)/urdf/mk1_sim.urdf.xacro"/>
-
+    
 </robot>
