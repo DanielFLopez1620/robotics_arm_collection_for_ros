@@ -148,21 +148,19 @@ void loop()
 
 void cmd_servo_callback(const void *msgin)
 {
-    const std_msgs__msg__Float32MultiArray *msg = (const std_msgs__msg__Float32MultiArray *) msgin;
-
-    servo_1.setPositionRad(msg->data.data[0] + M_PI_2);
-    servo_2.setPositionRad(msg->data.data[1] + M_PI_2);
-    servo_3.setPositionRad(msg->data.data[2] + M_PI_2);
-    servo_g.setPositionRad(msg->data.data[3] + M_PI_2);
+    servo_1.setPositionDeg( (int) servo_msg_cmd.data.data[0]);
+    servo_2.setPositionDeg( (int) servo_msg_cmd.data.data[1]);
+    servo_3.setPositionDeg( (int) servo_msg_cmd.data.data[2]);
+    servo_g.setPositionDeg( (int) servo_msg_cmd.data.data[3]);
     
 }
 
 void timer_servo_callback(rcl_timer_t * timer, int64_t last_call_tm)
 {
-    servo_msg_feedback.data.data[0] = servo_1.getPositionRad() - M_PI_2;
-    servo_msg_feedback.data.data[1] = servo_2.getPositionRad() - M_PI_2;
-    servo_msg_feedback.data.data[2] = servo_3.getPositionRad() - M_PI_2;
-    servo_msg_feedback.data.data[3] = servo_g.getPositionRad() - M_PI_2;
+    servo_msg_feedback.data.data[0] = (float) servo_1.getPositionDeg();
+    servo_msg_feedback.data.data[1] = (float) servo_2.getPositionDeg();
+    servo_msg_feedback.data.data[2] = (float) servo_3.getPositionDeg();
+    servo_msg_feedback.data.data[3] = (float) servo_g.getPositionDeg();
     
     RCSOFTCHECK(rcl_publish(&servo_pub, (const void*)&servo_msg_feedback, NULL));
 }

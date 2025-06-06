@@ -21,7 +21,7 @@ namespace fwd
      * 
      * @param degrees Pointer to the desired objective
      */
-    void ServoMotor::setPositionDeg(const float& degrees)
+    void ServoMotor::setPositionDeg(const int& degrees)
     {
         if(degrees > this->max_pos_)
         {
@@ -42,7 +42,7 @@ namespace fwd
      * 
      * @return Current position in degrees.
      */
-    float ServoMotor::getPositionDeg()
+    int ServoMotor::getPositionDeg()
     {
         return this->servo_.read();
     }
@@ -94,7 +94,7 @@ namespace fwd
      * 
      * @param degrees Objective to move slowly.
      */
-    void ServoMotor::setObjectiveDeg(float degrees)
+    void ServoMotor::setObjectiveDeg(int degrees)
     {
         this->objective_ = degrees;
     }

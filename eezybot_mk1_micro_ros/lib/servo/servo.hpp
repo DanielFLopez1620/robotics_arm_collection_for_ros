@@ -32,12 +32,12 @@ namespace fwd
             : max_pos_{max_pos}, min_pos_{min_pos}, pwm_pin_{pwm_pin} {}
 
         void begin();
-        void setPositionDeg(const float& degrees);
-        float getPositionDeg();
+        void setPositionDeg(const int& degrees);
+        int getPositionDeg();
         void setPositionRad(const float& radians);
         float getPositionRad();
         void approximatePositionDeg();
-        void setObjectiveDeg(float degrees);
+        void setObjectiveDeg(int degrees);
         void setObjectiveRad(float radians);
     };
 }
