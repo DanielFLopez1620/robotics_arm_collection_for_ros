@@ -6,7 +6,7 @@
 #include <rclc/rclc.h>
 #include <rclc/executor.h>
 
-#include <std_msgs/msg/int64_multi_array.h>
+#include <std_msgs/msg/float32_multi_array.h>
 #include <std_msgs/msg/multi_array_dimension.h>
 
 #include "servo.hpp"
@@ -24,8 +24,8 @@ void error_loop();
 rcl_publisher_t servo_pub;
 rcl_subscription_t servo_sub;
 
-std_msgs__msg__Int64MultiArray servo_msg_cmd;
-std_msgs__msg__Int64MultiArray servo_msg_feedback;
+std_msgs__msg__Float32MultiArray servo_msg_cmd;
+std_msgs__msg__Float32MultiArray servo_msg_feedback;
 
 fwd::ServoMotor servo_1(0, 180, 16);
 fwd::ServoMotor servo_2(0, 180, 17);
@@ -40,7 +40,7 @@ rcl_timer_t timer;
 
 void setup()
 {
-    Serial.begin(155200);
+    Serial.begin(115200);
     set_microros_serial_transports(Serial);
 
     delay(2000);
@@ -63,14 +63,14 @@ void setup()
     RCCHECK(rclc_publisher_init_default(
         &servo_pub,
         &node,
-        ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64MultiArray),
+        ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float32MultiArray),
         "mk1_servos_feedback"
     ));
 
     RCCHECK(rclc_subscription_init_default(
         &servo_sub,
         &node,
-        ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64MultiArray),
+        ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float32MultiArray),
         "mk1_servos_cmd"
     ));
 
@@ -83,36 +83,36 @@ void setup()
         timer_servo_callback
     ));
 
-    servo_msg_cmd.data.capacity = 2;
-    servo_msg_cmd.data.size = 0;
-    servo_msg_cmd.data.data = (int64_t*) malloc(servo_msg_cmd.data.capacity * sizeof(int64_t));
+    servo_msg_cmd.data.capacity = 4;
+    servo_msg_cmd.data.size = 4;
+    servo_msg_cmd.data.data = (float_t*) malloc(servo_msg_cmd.data.capacity * sizeof(float_t));
 
-    servo_msg_cmd.layout.dim.capacity = 2;
+    servo_msg_cmd.layout.dim.capacity = 4;
     servo_msg_cmd.layout.dim.size = 0;
     servo_msg_cmd.layout.dim.data = (std_msgs__msg__MultiArrayDimension*) malloc(
         servo_msg_cmd.layout.dim.capacity * sizeof(std_msgs__msg__MultiArrayDimension));
 
     for(size_t i = 0; i < servo_msg_cmd.layout.dim.capacity; ++i)
     {
-        servo_msg_cmd.layout.dim.data[i].label.capacity = 2;
-        servo_msg_cmd.layout.dim.data[i].label.size = 0;
+        servo_msg_cmd.layout.dim.data[i].label.capacity = 4;
+        servo_msg_cmd.layout.dim.data[i].label.size = 4;
         servo_msg_cmd.layout.dim.data[i].label.data = (char*) malloc(
             servo_msg_cmd.layout.dim.data[i].label.capacity * sizeof(char));
     }
 
-    servo_msg_feedback.data.capacity = 2;
-    servo_msg_feedback.data.size = 0;
-    servo_msg_feedback.data.data = (int64_t*) malloc(servo_msg_feedback.data.capacity * sizeof(int64_t));
+    servo_msg_feedback.data.capacity = 4;
+    servo_msg_feedback.data.size = 4;
+    servo_msg_feedback.data.data = (float_t*) malloc(servo_msg_feedback.data.capacity * sizeof(float_t));
 
-    servo_msg_feedback.layout.dim.capacity = 2;
-    servo_msg_feedback.layout.dim.size = 0;
+    servo_msg_feedback.layout.dim.capacity = 4;
+    servo_msg_feedback.layout.dim.size = 4;
     servo_msg_feedback.layout.dim.data = (std_msgs__msg__MultiArrayDimension*) malloc(
         servo_msg_feedback.layout.dim.capacity * sizeof(std_msgs__msg__MultiArrayDimension));
 
     for(size_t i = 0; i < servo_msg_feedback.layout.dim.capacity; ++i)
     {
-        servo_msg_feedback.layout.dim.data[i].label.capacity = 2;
-        servo_msg_feedback.layout.dim.data[i].label.size = 0;
+        servo_msg_feedback.layout.dim.data[i].label.capacity = 4;
+        servo_msg_feedback.layout.dim.data[i].label.size = 4;
         servo_msg_feedback.layout.dim.data[i].label.data = (char*) malloc(
             servo_msg_feedback.layout.dim.data[i].label.capacity * sizeof(char));
     }
@@ -127,12 +127,17 @@ void setup()
         &servo_msg_cmd,
         &cmd_servo_callback,
         ON_NEW_DATA
-    ))
+    ));
 
     servo_1.begin();
     servo_2.begin();
     servo_3.begin();
     servo_g.begin();
+
+    servo_1.setPositionDeg(40);
+    servo_2.setPositionDeg(40);
+    servo_3.setPositionDeg(40);
+    servo_g.setPositionDeg(40);
 }
 
 void loop()
@@ -143,35 +148,23 @@ void loop()
 
 void cmd_servo_callback(const void *msgin)
 {
-    const std_msgs__msg__Int64MultiArray *msg = (const std_msgs__msg__Int64MultiArray *) msgin;
+    const std_msgs__msg__Float32MultiArray *msg = (const std_msgs__msg__Float32MultiArray *) msgin;
 
-    if(servo_1.getPositionRad() - M_PI_2 != msg->data.data[0])
-    {
-        servo_1.setPositionRad(msg->data.data[0] + M_PI_2);
-    }
-    if(servo_2.getPositionRad() - M_PI_2 != msg->data.data[1])
-    {
-        servo_2.setPositionRad(msg->data.data[1] + M_PI_2);
-    }
-    if(servo_3.getPositionRad() - M_PI_2 != msg->data.data[2])
-    {
-        servo_3.setPositionRad(msg->data.data[2] + M_PI_2);
-    }
-    if(servo_g.getPositionRad() - M_PI_2 != msg->data.data[3])
-    {
-        servo_g.setPositionRad(msg->data.data[3] + M_PI_2);
-    }
-
+    servo_1.setPositionRad(msg->data.data[0] + M_PI_2);
+    servo_2.setPositionRad(msg->data.data[1] + M_PI_2);
+    servo_3.setPositionRad(msg->data.data[2] + M_PI_2);
+    servo_g.setPositionRad(msg->data.data[3] + M_PI_2);
+    
 }
 
 void timer_servo_callback(rcl_timer_t * timer, int64_t last_call_tm)
 {
-    servo_msg_cmd.data.data[0] = servo_1.getPositionRad() - M_PI_2;
-    servo_msg_cmd.data.data[1] = servo_2.getPositionRad() - M_PI_2;
-    servo_msg_cmd.data.data[2] = servo_3.getPositionRad() - M_PI_2;
-    servo_msg_cmd.data.data[3] = servo_g.getPositionRad() - M_PI_2;
+    servo_msg_feedback.data.data[0] = servo_1.getPositionRad() - M_PI_2;
+    servo_msg_feedback.data.data[1] = servo_2.getPositionRad() - M_PI_2;
+    servo_msg_feedback.data.data[2] = servo_3.getPositionRad() - M_PI_2;
+    servo_msg_feedback.data.data[3] = servo_g.getPositionRad() - M_PI_2;
     
-    RCSOFTCHECK(rcl_publish(&servo_pub, (const void*)&servo_msg_cmd, NULL));
+    RCSOFTCHECK(rcl_publish(&servo_pub, (const void*)&servo_msg_feedback, NULL));
 }
 
 void error_loop()
