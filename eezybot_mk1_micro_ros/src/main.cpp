@@ -27,10 +27,10 @@ rcl_subscription_t servo_sub;
 std_msgs__msg__Float32MultiArray servo_msg_cmd;
 std_msgs__msg__Float32MultiArray servo_msg_feedback;
 
-fwd::ServoMotor servo_1(0, 180, 16);
-fwd::ServoMotor servo_2(0, 180, 17);
-fwd::ServoMotor servo_3(0, 180, 18);
-fwd::ServoMotor servo_g(0, 180, 19);
+fwd::ServoMotor servo_1(180, 0, 16);
+fwd::ServoMotor servo_2(180, 0, 17);
+fwd::ServoMotor servo_3(180, 0, 18);
+fwd::ServoMotor servo_g(180, 0, 19);
 
 rclc_executor_t executor;
 rclc_support_t support;
